@@ -740,19 +740,16 @@
       // Affiche la confirmation immédiatement (UX fluide)
       showConfirmation(nom, accompagne);
 
-      // Envoie les données vers Google Sheets en arrière-plan
+      // Envoie les données vers Google Sheets en arrière-plan (GET évite les soucis CORS/redirect d'Apps Script)
       if (SHEET_URL !== 'APPS_SCRIPT_URL_ICI') {
-        fetch(SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: new URLSearchParams({
-            nom,
-            email,
-            samedi:     state.samedi   || 'Non précisé',
-            dimanche:   state.dimanche || 'Non précisé',
-            accompagne
-          })
-        }).catch(function() {});
+        const params = new URLSearchParams({
+          nom,
+          email,
+          samedi:      state.samedi   || 'Non précisé',
+          dimanche:    state.dimanche || 'Non précisé',
+          accompagne
+        });
+        fetch(SHEET_URL + '?' + params.toString(), { mode: 'no-cors' }).catch(function() {});
       }
     });
   </script>
