@@ -701,21 +701,35 @@
   </footer>
 
   <script>
+    // ── Remplace cette URL par l'URL de déploiement de ton Apps Script ──
+    const SHEET_URL = 'APPS_SCRIPT_URL_ICI';
+
     const state = { samedi: null, dimanche: null };
 
     function pick(key, val) {
       state[key] = val;
-      const prefixes = { samedi: 'samedi', dimanche: 'dimanche' };
-      const p = prefixes[key];
-      document.getElementById('btn-' + p + '-oui').classList.toggle('active', val === 'Oui');
-      document.getElementById('btn-' + p + '-non').classList.toggle('active', val === 'Non');
+      document.getElementById('btn-' + key + '-oui').classList.toggle('active', val === 'Oui');
+      document.getElementById('btn-' + key + '-non').classList.toggle('active', val === 'Non');
+    }
+
+    function showConfirmation(nom, accompagne) {
+      const firstName = nom.split(/\s+/)[0] || nom;
+      document.getElementById('conf-greeting').textContent = 'Merci ' + firstName;
+      document.getElementById('conf-samedi').textContent =
+        state.samedi === 'Oui' ? 'Présent·e' : state.samedi === 'Non' ? 'Absent·e' : 'Non précisé';
+      document.getElementById('conf-dimanche').textContent =
+        state.dimanche === 'Oui' ? 'Présent·e' : state.dimanche === 'Non' ? 'Absent·e' : 'Non précisé';
+      document.getElementById('conf-accompagne').textContent = accompagne || 'Non précisé';
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-confirmation').classList.add('visible');
     }
 
     document.getElementById('rsvp-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const nom = document.getElementById('input-nom').value.trim();
-      const email = document.getElementById('input-email').value.trim();
-      const errorEl = document.getElementById('form-error');
+      const nom       = document.getElementById('input-nom').value.trim();
+      const email     = document.getElementById('input-email').value.trim();
+      const accompagne = document.getElementById('input-accompagne').value.trim();
+      const errorEl   = document.getElementById('form-error');
 
       if (!nom || !email) {
         errorEl.classList.add('visible');
@@ -723,18 +737,23 @@
       }
       errorEl.classList.remove('visible');
 
-      const firstName = nom.split(/\s+/)[0] || nom;
-      const accompagne = document.getElementById('input-accompagne').value.trim();
+      // Affiche la confirmation immédiatement (UX fluide)
+      showConfirmation(nom, accompagne);
 
-      document.getElementById('conf-greeting').textContent = 'Merci ' + firstName;
-      document.getElementById('conf-samedi').textContent =
-        state.samedi === 'Oui' ? 'Présent·e' : state.samedi === 'Non' ? 'Absent·e' : 'Non précisé';
-      document.getElementById('conf-dimanche').textContent =
-        state.dimanche === 'Oui' ? 'Présent·e' : state.dimanche === 'Non' ? 'Absent·e' : 'Non précisé';
-      document.getElementById('conf-accompagne').textContent = accompagne || 'Non précisé';
-
-      document.getElementById('rsvp-form').style.display = 'none';
-      document.getElementById('rsvp-confirmation').classList.add('visible');
+      // Envoie les données vers Google Sheets en arrière-plan
+      if (SHEET_URL !== 'APPS_SCRIPT_URL_ICI') {
+        fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams({
+            nom,
+            email,
+            samedi:     state.samedi   || 'Non précisé',
+            dimanche:   state.dimanche || 'Non précisé',
+            accompagne
+          })
+        }).catch(function() {});
+      }
     });
   </script>
 
