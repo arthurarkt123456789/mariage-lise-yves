@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mariage Lise &amp; Yves · 5–6 Septembre 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Mulish', sans-serif; color: #3A352C; background: #F4EEE3; overflow-x: hidden; }
+    input::placeholder, textarea::placeholder { color: #B3A88F; font-style: italic; }
+    input:focus, textarea:focus { outline: none; border-color: #B5552F !important; }
+    ::selection { background: #E6C9A8; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(38,30,22,0.42), rgba(38,30,22,0.30) 45%, rgba(38,30,22,0.62));
+    }
+    .hero__content {
+      position: relative;
+      color: #FBF8F1;
+    }
+    .hero__eyebrow {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      color: rgba(251,248,241,0.85);
+    }
+    .hero__surprise {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(32px, 5vw, 52px);
+      color: #F0C9A0;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero__names {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(64px, 12vw, 150px);
+      line-height: 0.94;
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+    .hero__amp {
+      font-family: 'Pinyon Script', cursive;
+      font-weight: 400;
+      color: #F0C9A0;
+      font-size: 0.7em;
+      vertical-align: 0.04em;
+    }
+    .hero__subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(22px, 3vw, 32px);
+      margin-top: 8px;
+      color: rgba(251,248,241,0.92);
+    }
+    .hero__date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 36px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(251,248,241,0.9);
+    }
+    .hero__date-line {
+      width: 36px;
+      height: 1px;
+      background: rgba(251,248,241,0.5);
+      display: inline-block;
+    }
+    .hero__location {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-top: 10px;
+      color: rgba(251,248,241,0.85);
+    }
+    .hero__cta {
+      display: inline-block;
+      margin-top: 40px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #3A352C;
+      background: #F0E4D0;
+      padding: 15px 32px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 150ms ease;
+    }
+    .hero__cta:hover { background: #FBF8F1; }
+
+    /* ── Story ── */
+    .story {
+      padding: 104px 24px;
+    }
+    .story__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .story__photo-wrap {
+      position: relative;
+    }
+    .story__photo {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      object-position: center 28%;
+      border-radius: 2px;
+      display: block;
+      box-shadow: 0 18px 50px rgba(58,45,30,0.22);
+    }
+    .story__photo-border {
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      right: 32px;
+      bottom: 32px;
+      border: 1px solid #C9603A;
+      border-radius: 2px;
+      z-index: -1;
+    }
+    .story__label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #B5552F;
+      margin-bottom: 22px;
+    }
+    .story__heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.4vw, 56px);
+      line-height: 1.04;
+      letter-spacing: 0.01em;
+      margin: 0 0 28px;
+      color: #3A352C;
+    }
+    .story__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      line-height: 1.62;
+      color: #574F41;
+      margin: 0 0 20px;
+    }
+    .story__punchline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.5;
+      color: #B5552F;
+      margin: 0;
+    }
+
+    /* ── Programme ── */
+    .programme {
+      background: #EAE2D2;
+      padding: 104px 24px;
+    }
+    .programme__inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .programme__header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .programme__label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #B5552F;
+      margin-bottom: 16px;
+    }
+    .programme__heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1;
+      margin: 0;
+      color: #3A352C;
+    }
+    .day-card {
+      background: #FBF8F1;
+      border: 1px solid #DDD2BF;
+      border-radius: 3px;
+      padding: 48px;
+      margin-bottom: 28px;
+    }
+    .day-card:last-of-type { margin-bottom: 0; }
+    .day-card__header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .day-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #3A352C;
+      line-height: 1;
+    }
+    .day-card__date {
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #9A8E78;
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+    }
+    .event + .event {
+      padding-top: 32px;
+      margin-top: 32px;
+      border-top: 1px solid #E6DDCB;
+    }
+    .event__time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: #B5552F;
+      line-height: 1;
+    }
+    .event__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #3A352C;
+      margin-bottom: 6px;
+    }
+    .event__address {
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #6B6253;
+    }
+    .event__note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: #7C7A52;
+      margin-top: 12px;
+    }
+    .dresscode {
+      text-align: center;
+      margin-top: 56px;
+    }
+    .dresscode__label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #9A8E78;
+      margin-bottom: 12px;
+    }
+    .dresscode__value {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(28px, 3.6vw, 40px);
+      color: #B5552F;
+      line-height: 1.1;
+    }
+
+    /* ── RSVP ── */
+    .rsvp {
+      padding: 104px 24px;
+    }
+    .rsvp__inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .rsvp__header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .rsvp__script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 40px;
+      color: #B5552F;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .rsvp__heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1;
+      margin: 0 0 16px;
+      color: #3A352C;
+    }
+    .rsvp__deadline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 21px;
+      color: #6B6253;
+      margin: 0;
+    }
+    .rsvp__card {
+      background: #FBF8F1;
+      border: 1px solid #DDD2BF;
+      border-radius: 3px;
+    }
+
+    /* Form */
+    .rsvp__form {
+      padding: 48px;
+    }
+    .form-field {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .form-field--last { margin-bottom: 38px; }
+    .form-label {
+      display: block;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9A8E78;
+      margin-bottom: 8px;
+    }
+    .form-label__sub {
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: #B3A88F;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: #3A352C;
+      padding: 8px 2px;
+      border: none;
+      border-bottom: 1px solid #D2C7B3;
+      background: transparent;
+    }
+    .form-input:focus { border-color: #B5552F; }
+    .toggle-group {
+      margin-bottom: 32px;
+    }
+    .toggle-group__label {
+      display: block;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9A8E78;
+      margin-bottom: 12px;
+    }
+    .toggle-group__buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .toggle-btn {
+      flex: 1;
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 12px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+      border: 1px solid #D2C7B3;
+      background: transparent;
+      color: #6B6253;
+    }
+    .toggle-btn.active {
+      border-color: #B5552F;
+      background: #B5552F;
+      color: #FBF8F1;
+    }
+    .submit-btn {
+      width: 100%;
+      background: #B5552F;
+      color: #FBF8F1;
+      border: none;
+      font-family: 'Mulish', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 18px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    .submit-btn:hover { background: #9E4727; }
+    .form-error {
+      display: none;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #B5552F;
+      margin-top: 16px;
+    }
+    .form-error.visible { display: block; }
+
+    /* Confirmation */
+    .rsvp__confirmation {
+      display: none;
+      padding: 56px 44px;
+      text-align: center;
+    }
+    .rsvp__confirmation.visible { display: block; }
+    .confirmation__script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 52px;
+      color: #B5552F;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .confirmation__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      line-height: 1.6;
+      color: #574F41;
+      margin: 0 0 28px;
+    }
+    .confirmation__summary {
+      display: inline-block;
+      text-align: left;
+      border-top: 1px solid #E6DDCB;
+      border-bottom: 1px solid #E6DDCB;
+      padding: 20px 0;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      line-height: 2;
+      color: #3A352C;
+    }
+    .confirmation__summary span {
+      color: #9A8E78;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #2E2820;
+      color: rgba(244,238,227,0.6);
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .footer__names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      color: #F4EEE3;
+      line-height: 1;
+    }
+    .footer__amp {
+      font-family: 'Pinyon Script', cursive;
+      color: #E0A876;
+    }
+    .footer__date {
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-top: 14px;
+    }
+    .footer__toast {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: rgba(244,238,227,0.45);
+      margin-top: 18px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .story__inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .story__photo { height: 380px; }
+      .story__photo-border { display: none; }
+      .day-card { padding: 32px 24px; }
+      .event { grid-template-columns: 90px 1fr; }
+      .rsvp__form { padding: 32px 24px; }
+      .rsvp__confirmation { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HERO ====== -->
+  <header class="hero">
+    <img class="hero__bg" src="assets/venue.jpg" alt="Domaine de la Castellette">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="hero__eyebrow">Avec joie, nous vous convions</div>
+      <div class="hero__surprise">Surprise…</div>
+      <h1 class="hero__names">Lise <span class="hero__amp">&amp;</span> Yves</h1>
+      <div class="hero__subtitle">se marient</div>
+      <div class="hero__date">
+        <span class="hero__date-line"></span>
+        5 &amp; 6 Septembre 2026
+        <span class="hero__date-line"></span>
+      </div>
+      <div class="hero__location">La Tour d'Aigues · Luberon</div>
+      <a href="#rsvp" class="hero__cta">Confirmer ma présence</a>
+    </div>
+  </header>
+
+  <!-- ====== STORY ====== -->
+  <section class="story">
+    <div class="story__inner">
+      <div class="story__photo-wrap">
+        <img class="story__photo" src="assets/couple.jpg" alt="Lise et Yves">
+        <div class="story__photo-border"></div>
+      </div>
+      <div>
+        <div class="story__label">Quatorze ans plus tard</div>
+        <h2 class="story__heading">Et toujours l'envie<br>de se dire oui.</h2>
+        <p class="story__text">Après quatorze ans de vie commune, des milliers de fous rires, une belle aventure professionnelle, une jolie extension de projet en 2018, et tant de souvenirs…</p>
+        <p class="story__punchline">…nous avons décidé de nous marier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROGRAMME ====== -->
+  <section class="programme">
+    <div class="programme__inner">
+      <div class="programme__header">
+        <div class="programme__label">Le déroulé des festivités</div>
+        <h2 class="programme__heading">Deux jours en Provence</h2>
+      </div>
+
+      <!-- Samedi -->
+      <div class="day-card">
+        <div class="day-card__header">
+          <div class="day-card__name">Samedi</div>
+          <div class="day-card__date">5 septembre</div>
+        </div>
+        <div class="event">
+          <div class="event__time">10h30</div>
+          <div>
+            <div class="event__title">Mariage civil</div>
+            <div class="event__address">Mairie de La Tour d'Aigues<br>7 place de l'Église · 84240 La Tour d'Aigues</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event__time">12h00</div>
+          <div>
+            <div class="event__title">Journée champêtre</div>
+            <div class="event__address">Domaine de la Castellette<br>120 chemin des Bouisses · 84240 La Tour d'Aigues</div>
+            <div class="event__note">Déjeuner sous les arbres, bons vins et grande tablée jusqu'au bout de la nuit.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dimanche -->
+      <div class="day-card">
+        <div class="day-card__header">
+          <div class="day-card__name">Dimanche</div>
+          <div class="day-card__date">6 septembre</div>
+        </div>
+        <div class="event">
+          <div class="event__time">Midi</div>
+          <div>
+            <div class="event__title">Méchoui au domaine</div>
+            <div class="event__address">Pour celles et ceux qui souhaitent prolonger les festivités, on remet le couvert au Domaine de la Castellette.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dress code -->
+      <div class="dresscode">
+        <div class="dresscode__label">Dress code</div>
+        <div class="dresscode__value">Bonne humeur &amp; convivialité</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RSVP ====== -->
+  <section id="rsvp" class="rsvp">
+    <div class="rsvp__inner">
+      <div class="rsvp__header">
+        <div class="rsvp__script">Votre réponse</div>
+        <h2 class="rsvp__heading">Serez-vous des nôtres&nbsp;?</h2>
+        <p class="rsvp__deadline">Merci de nous répondre avant le 15 août.</p>
+      </div>
+
+      <div class="rsvp__card">
+        <!-- Confirmation (shown after submit) -->
+        <div class="rsvp__confirmation" id="rsvp-confirmation">
+          <div class="confirmation__script" id="conf-greeting">Merci</div>
+          <p class="confirmation__text">Votre réponse est bien arrivée. Nous avons hâte de trinquer avec vous.</p>
+          <div class="confirmation__summary">
+            <div><span>Samedi 5 sept.</span> &nbsp;—&nbsp; <span id="conf-samedi"></span></div>
+            <div><span>Dimanche 6 sept.</span> &nbsp;—&nbsp; <span id="conf-dimanche"></span></div>
+            <div><span>Présence</span> &nbsp;—&nbsp; <span id="conf-accompagne"></span></div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="rsvp__form" id="rsvp-form" novalidate>
+          <label class="form-field">
+            <span class="form-label">Nom &amp; prénom</span>
+            <input class="form-input" type="text" id="input-nom" placeholder="Marie Dupont" autocomplete="name">
+          </label>
+
+          <label class="form-field" style="margin-bottom: 36px;">
+            <span class="form-label">Email</span>
+            <input class="form-input" type="email" id="input-email" placeholder="marie.dupont@email.com" autocomplete="email">
+          </label>
+
+          <div class="toggle-group">
+            <span class="toggle-group__label">
+              Présent·e le samedi&nbsp;?
+              <span class="form-label__sub">mariage &amp; journée champêtre</span>
+            </span>
+            <div class="toggle-group__buttons">
+              <button type="button" class="toggle-btn" id="btn-samedi-oui" onclick="pick('samedi','Oui')">Avec plaisir</button>
+              <button type="button" class="toggle-btn" id="btn-samedi-non" onclick="pick('samedi','Non')">Hélas, non</button>
+            </div>
+          </div>
+
+          <div class="toggle-group">
+            <span class="toggle-group__label">
+              Présent·e le dimanche&nbsp;?
+              <span class="form-label__sub">méchoui</span>
+            </span>
+            <div class="toggle-group__buttons">
+              <button type="button" class="toggle-btn" id="btn-dimanche-oui" onclick="pick('dimanche','Oui')">Je prolonge</button>
+              <button type="button" class="toggle-btn" id="btn-dimanche-non" onclick="pick('dimanche','Non')">Non</button>
+            </div>
+          </div>
+
+          <label class="form-field form-field--last">
+            <span class="form-label">Seul·e ou accompagné·e&nbsp;?</span>
+            <input class="form-input" type="text" id="input-accompagne" placeholder="Accompagné·e de mon conjoint et nos deux enfants…">
+          </label>
+
+          <button type="submit" class="submit-btn">Envoyer ma réponse</button>
+          <div class="form-error" id="form-error">Merci d'indiquer votre nom et votre email.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer__names">Lise <span class="footer__amp">&amp;</span> Yves</div>
+    <div class="footer__date">5 — 6 septembre 2026 · La Tour d'Aigues</div>
+    <div class="footer__toast">On trinquera à votre santé.</div>
+  </footer>
+
+  <script>
+    const state = { samedi: null, dimanche: null };
+
+    function pick(key, val) {
+      state[key] = val;
+      const prefixes = { samedi: 'samedi', dimanche: 'dimanche' };
+      const p = prefixes[key];
+      document.getElementById('btn-' + p + '-oui').classList.toggle('active', val === 'Oui');
+      document.getElementById('btn-' + p + '-non').classList.toggle('active', val === 'Non');
+    }
+
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nom = document.getElementById('input-nom').value.trim();
+      const email = document.getElementById('input-email').value.trim();
+      const errorEl = document.getElementById('form-error');
+
+      if (!nom || !email) {
+        errorEl.classList.add('visible');
+        return;
+      }
+      errorEl.classList.remove('visible');
+
+      const firstName = nom.split(/\s+/)[0] || nom;
+      const accompagne = document.getElementById('input-accompagne').value.trim();
+
+      document.getElementById('conf-greeting').textContent = 'Merci ' + firstName;
+      document.getElementById('conf-samedi').textContent =
+        state.samedi === 'Oui' ? 'Présent·e' : state.samedi === 'Non' ? 'Absent·e' : 'Non précisé';
+      document.getElementById('conf-dimanche').textContent =
+        state.dimanche === 'Oui' ? 'Présent·e' : state.dimanche === 'Non' ? 'Absent·e' : 'Non précisé';
+      document.getElementById('conf-accompagne').textContent = accompagne || 'Non précisé';
+
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-confirmation').classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>
