@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mariage Lise &amp; Yves · 5–6 Septembre 2026</title>
+  <title>Lise &amp; Yves · 5–6 Septembre 2026</title>
+  <meta property="og:title" content="Lise &amp; Yves · 5–6 Septembre 2026">
+  <meta property="og:description" content="Une belle occasion de se réunir en Provence — rejoins-nous les 5 et 6 septembre 2026.">
+  <meta property="og:image" content="assets/venue.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lise &amp; Yves · 5–6 Septembre 2026">
+  <meta name="twitter:description" content="Une belle occasion de se réunir en Provence — rejoins-nous les 5 et 6 septembre 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -310,6 +317,108 @@
       line-height: 1.1;
     }
 
+    /* ── Hotels ── */
+    .hotels {
+      padding: 104px 24px;
+      background: #F4EEE3;
+    }
+    .hotels__inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .hotels__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .hotels__label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #B5552F;
+      margin-bottom: 16px;
+    }
+    .hotels__heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.04;
+      margin: 0 0 16px;
+      color: #3A352C;
+    }
+    .hotels__intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 21px;
+      color: #6B6253;
+      margin: 0;
+    }
+    .hotels__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .hotel-card {
+      background: #FBF8F1;
+      border: 1px solid #DDD2BF;
+      border-radius: 3px;
+      padding: 32px 28px;
+    }
+    .hotel-card__badge {
+      display: inline-block;
+      font-family: 'Mulish', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #B5552F;
+      border: 1px solid #C9603A;
+      border-radius: 2px;
+      padding: 3px 8px;
+      margin-bottom: 16px;
+    }
+    .hotel-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: #3A352C;
+      margin-bottom: 6px;
+    }
+    .hotel-card__location {
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      color: #9A8E78;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .hotel-card__desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      line-height: 1.55;
+      color: #574F41;
+      margin-bottom: 16px;
+    }
+    .hotel-card__price {
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      color: #6B6253;
+    }
+    .hotel-card__price strong {
+      color: #3A352C;
+    }
+    .hotels__note {
+      text-align: center;
+      margin-top: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: #6B6253;
+    }
+    @media (max-width: 768px) {
+      .hotels__grid { grid-template-columns: 1fr; }
+    }
+
     /* ── RSVP ── */
     .rsvp {
       padding: 104px 24px;
@@ -452,6 +561,12 @@
       margin-top: 16px;
     }
     .form-error.visible { display: block; }
+    .form-textarea {
+      resize: vertical;
+      min-height: 88px;
+      line-height: 1.5;
+      padding: 8px 2px;
+    }
 
     /* Confirmation */
     .rsvp__confirmation {
@@ -613,7 +728,7 @@
         <div class="event">
           <div class="event__time">Midi</div>
           <div>
-            <div class="event__title">Méchoui au domaine</div>
+            <div class="event__title">Déjeuner au domaine</div>
             <div class="event__address">Pour celles et ceux qui souhaitent prolonger les festivités, on remet le couvert au Domaine de la Castellette.</div>
           </div>
         </div>
@@ -624,6 +739,47 @@
         <div class="dresscode__label">Dress code</div>
         <div class="dresscode__value">Bonne humeur &amp; convivialité</div>
       </div>
+    </div>
+  </section>
+
+  <!-- ====== HÉBERGEMENTS ====== -->
+  <section class="hotels">
+    <div class="hotels__inner">
+      <div class="hotels__header">
+        <div class="hotels__label">Pour ceux qui viennent de loin</div>
+        <h2 class="hotels__heading">Où dormir dans le coin&nbsp;?</h2>
+        <p class="hotels__intro">Quelques adresses que nous aimons, à deux pas du domaine.</p>
+      </div>
+
+      <div class="hotels__grid">
+
+        <div class="hotel-card">
+          <div class="hotel-card__badge">Coup de cœur</div>
+          <div class="hotel-card__name">Hôtel [Placeholder A]</div>
+          <div class="hotel-card__location">La Tour d'Aigues · à 5 min</div>
+          <p class="hotel-card__desc">Charmant hôtel de village, piscine, terrasse ombragée. Idéal pour rayonner dans le Luberon le week-end.</p>
+          <div class="hotel-card__price">À partir de <strong>XX €</strong> / nuit</div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-card__badge">Proche domaine</div>
+          <div class="hotel-card__name">Hôtel [Placeholder B]</div>
+          <div class="hotel-card__location">Pertuis · à 10 min</div>
+          <p class="hotel-card__desc">Chambre d'hôtes cosy en pleine Provence. Petit-déjeuner maison, accueil chaleureux.</p>
+          <div class="hotel-card__price">À partir de <strong>XX €</strong> / nuit</div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-card__badge">Budget doux</div>
+          <div class="hotel-card__name">Hôtel [Placeholder C]</div>
+          <div class="hotel-card__location">Aix-en-Provence · à 30 min</div>
+          <p class="hotel-card__desc">Pour ceux qui souhaitent profiter d'Aix après le week-end. Navette possible à organiser.</p>
+          <div class="hotel-card__price">À partir de <strong>XX €</strong> / nuit</div>
+        </div>
+
+      </div>
+
+      <p class="hotels__note">Pensez à réserver tôt — le Luberon en septembre affiche vite complet&nbsp;!</p>
     </div>
   </section>
 
@@ -674,7 +830,7 @@
           <div class="toggle-group">
             <span class="toggle-group__label">
               Présent·e le dimanche&nbsp;?
-              <span class="form-label__sub">méchoui</span>
+              <span class="form-label__sub">déjeuner au domaine</span>
             </span>
             <div class="toggle-group__buttons">
               <button type="button" class="toggle-btn" id="btn-dimanche-oui" onclick="pick('dimanche','Oui')">Je prolonge</button>
@@ -684,7 +840,7 @@
 
           <label class="form-field form-field--last">
             <span class="form-label">Seul·e ou accompagné·e&nbsp;?</span>
-            <input class="form-input" type="text" id="input-accompagne" placeholder="Accompagné·e de mon conjoint et nos deux enfants…">
+            <textarea class="form-input form-textarea" id="input-accompagne" placeholder="Seul·e / Accompagné·e de… (précisez le nombre et les noms si besoin)"></textarea>
           </label>
 
           <button type="submit" class="submit-btn">Envoyer ma réponse</button>
