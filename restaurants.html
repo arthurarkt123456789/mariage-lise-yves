@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurants · Lise &amp; Yves</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Mulish', sans-serif; color: #3A352C; background: #F4EEE3; overflow-x: hidden; }
+    ::selection { background: #E6C9A8; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244,238,227,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #DDD2BF;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 60px);
+    }
+    .nav__brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #3A352C;
+      letter-spacing: 0.04em;
+    }
+    .nav__back {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7A6E60;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    .nav__back:hover { color: #B5552F; }
+
+    /* ── Header ── */
+    .page-header {
+      padding: 80px clamp(20px, 7vw, 120px) 56px;
+      text-align: center;
+      border-bottom: 1px solid #DDD2BF;
+    }
+    .page-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: #B5552F;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(42px, 7vw, 80px);
+      line-height: 1;
+      margin: 0 0 16px;
+      color: #3A352C;
+    }
+    .page-script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(28px, 4vw, 44px);
+      color: #B5552F;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .page-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.65;
+      color: #574F41;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* ── Restaurants ── */
+    .restaurants {
+      padding: 72px clamp(20px, 7vw, 120px) 96px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .restaurant-card {
+      background: #FBF8F1;
+      border: 1px solid #DDD2BF;
+      border-radius: 3px;
+      padding: 40px 48px;
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .restaurant-card:last-child { margin-bottom: 0; }
+
+    .restaurant-card--featured {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .restaurant__meta {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .restaurant__number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: #B5552F;
+      opacity: 0.6;
+    }
+    .restaurant__tag {
+      font-family: 'Mulish', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #B5552F;
+      background: rgba(181,85,47,0.1);
+      border: 1px solid rgba(181,85,47,0.2);
+      border-radius: 2px;
+      padding: 3px 10px;
+    }
+    .restaurant__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.1;
+      margin: 0 0 6px;
+      color: #3A352C;
+    }
+    .restaurant__location {
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9A8E7E;
+      margin-bottom: 18px;
+    }
+    .restaurant__desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      line-height: 1.62;
+      color: #574F41;
+      margin: 0 0 24px;
+    }
+    .restaurant__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #B5552F;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(181,85,47,0.3);
+      padding-bottom: 2px;
+      transition: border-color 200ms ease, color 200ms ease;
+    }
+    .restaurant__link:hover { border-color: #B5552F; color: #8B3D1A; }
+
+    .restaurant__flyer {
+      width: 100%;
+      border-radius: 3px;
+      display: block;
+      box-shadow: 0 12px 36px rgba(58,45,30,0.18);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #3A352C;
+      color: rgba(251,248,241,0.6);
+      text-align: center;
+      padding: 48px 24px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+    }
+    .footer a {
+      color: rgba(251,248,241,0.6);
+      text-decoration: none;
+    }
+    .footer__names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #F0E4D0;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .restaurant-card { padding: 28px 24px; }
+      .restaurant-card--featured { grid-template-columns: 1fr; gap: 28px; }
+      .restaurant-card--featured .restaurant__flyer-wrap { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__brand" href="index.html">Lise &amp; Yves</a>
+  <a class="nav__back" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Retour
+  </a>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Bons plans</div>
+  <div class="page-title">Où manger ?</div>
+  <div class="page-script">nos adresses</div>
+  <p class="page-intro">Pour ceux qui arrivent dès vendredi et ceux qui jouent les prolongations après les festivités, voici quelques petites idées de restaurants dans le coin pour continuer à profiter et bien manger ! N'hésitez pas à réserver, les bonnes adresses sont souvent très demandées.</p>
+</div>
+
+<div class="restaurants">
+
+  <!-- 1. Marrenon -->
+  <div class="restaurant-card restaurant-card--featured">
+    <div class="restaurant__content">
+      <div class="restaurant__meta">
+        <span class="restaurant__number">01</span>
+        <span class="restaurant__tag">Vendredi 4 sept.</span>
+      </div>
+      <h2 class="restaurant__name">La soirée Marrenon<br>au Domaine Saint Victor</h2>
+      <div class="restaurant__location">La Tour d'Aigues</div>
+      <p class="restaurant__desc">Les Estivales Marrenon — une soirée magique en plein air au domaine. Concert live Artefact, foodtrucks, vins du terroir... Le cadre idéal pour commencer le weekend en beauté. <strong style="color:#3A352C;font-weight:500;">Vendredi 4 septembre, 19h–23h.</strong></p>
+      <a class="restaurant__link" href="https://www.marrenon.com" target="_blank" rel="noopener">
+        En savoir plus
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="restaurant__flyer-wrap">
+      <img class="restaurant__flyer" src="assets/marrenon-estivales.jpg" alt="Flyer Les Estivales Marrenon — Domaine Saint Victor">
+    </div>
+  </div>
+
+  <!-- 2. Brasserie du Château -->
+  <div class="restaurant-card">
+    <div class="restaurant__meta">
+      <span class="restaurant__number">02</span>
+    </div>
+    <h2 class="restaurant__name">La Brasserie du Château</h2>
+    <div class="restaurant__location">La Tour d'Aigues</div>
+    <p class="restaurant__desc">Une brasserie chaleureuse au cœur du village, parfaite pour un déjeuner ou un dîner en terrasse dans un cadre provençal authentique.</p>
+    <a class="restaurant__link" href="https://maps.google.com/?q=Brasserie+du+Château+La+Tour+d'Aigues" target="_blank" rel="noopener">
+      Voir sur Google Maps
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- 3. Le TiKi -->
+  <div class="restaurant-card">
+    <div class="restaurant__meta">
+      <span class="restaurant__number">03</span>
+    </div>
+    <h2 class="restaurant__name">Le TiKi</h2>
+    <div class="restaurant__location">Pertuis</div>
+    <p class="restaurant__desc">Une adresse conviviale et colorée à Pertuis, idéale pour un repas décontracté entre amis ou en famille. À deux pas de la Tour d'Aigues.</p>
+    <a class="restaurant__link" href="https://maps.google.com/?q=Le+TiKi+Pertuis" target="_blank" rel="noopener">
+      Voir sur Google Maps
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- 4. Auberge des Tilleuls -->
+  <div class="restaurant-card">
+    <div class="restaurant__meta">
+      <span class="restaurant__number">04</span>
+    </div>
+    <h2 class="restaurant__name">L'Auberge des Tilleuls</h2>
+    <div class="restaurant__location">Grambois</div>
+    <p class="restaurant__desc">Nichée dans le village perché de Grambois, cette auberge propose une cuisine du terroir soignée dans un décor bucolique. Un vrai coup de cœur provençal.</p>
+    <a class="restaurant__link" href="https://www.tilleuls.com/" target="_blank" rel="noopener">
+      Voir le site
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- 5. Art de Vie -->
+  <div class="restaurant-card">
+    <div class="restaurant__meta">
+      <span class="restaurant__number">05</span>
+      <span class="restaurant__tag">Midi uniquement</span>
+    </div>
+    <h2 class="restaurant__name">Art de Vie</h2>
+    <div class="restaurant__location">Provence</div>
+    <p class="restaurant__desc">Une table raffinée à découvrir le midi — cuisine élaborée, cadre soigné et ambiance apaisante. À réserver en avance, les places partent vite.</p>
+    <a class="restaurant__link" href="https://www.artdevie.fr/" target="_blank" rel="noopener">
+      Voir le site
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__names">Lise &amp; Yves</div>
+  <div>5–6 Septembre 2026 · Provence</div>
+</footer>
+
+</body>
+</html>
