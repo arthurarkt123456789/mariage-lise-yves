@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merci · Lise &amp; Yves</title>
+  <meta property="og:title" content="Merci · Lise &amp; Yves">
+  <meta property="og:description" content="Nous repartons avec des étoiles plein les yeux et le cœur rempli de bonheur. ❤️">
+  <meta property="og:image" content="assets/couple.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Mulish', sans-serif; color: #3A352C; background: #F4EEE3; overflow-x: hidden; }
+    ::selection { background: #E6C9A8; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244,238,227,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #DDD2BF;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 60px);
+    }
+    .nav__brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #3A352C;
+      letter-spacing: 0.04em;
+    }
+    .nav__back {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7A6E60;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    .nav__back:hover { color: #B5552F; }
+
+    /* ── Hero photo ── */
+    .hero {
+      position: relative;
+      height: clamp(420px, 65vh, 680px);
+      overflow: hidden;
+    }
+    .hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(38,30,22,0.08) 0%,
+        rgba(38,30,22,0.10) 55%,
+        rgba(38,30,22,0.68) 100%
+      );
+    }
+    .hero__caption {
+      position: absolute;
+      bottom: 52px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #FBF8F1;
+    }
+    .hero__script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(52px, 8vw, 88px);
+      line-height: 1;
+      color: #F0E4D0;
+      text-shadow: 0 2px 24px rgba(38,30,22,0.38);
+    }
+    .hero__sparkle {
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: rgba(251,248,241,0.78);
+      margin-bottom: 10px;
+    }
+
+    /* ── Merci body ── */
+    .merci {
+      padding: 96px 24px 112px;
+    }
+    .merci__inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .merci__label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: #B5552F;
+      margin-bottom: 20px;
+    }
+
+    .merci__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 auto 52px;
+      max-width: 280px;
+    }
+    .merci__divider-line {
+      flex: 1;
+      height: 1px;
+      background: #C9A882;
+    }
+    .merci__divider-ornament {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 26px;
+      color: #B5552F;
+      line-height: 1;
+    }
+
+    .merci__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.4vw, 26px);
+      line-height: 1.72;
+      color: #574F41;
+      margin: 0 0 32px;
+    }
+    .merci__text strong {
+      color: #3A352C;
+      font-weight: 600;
+    }
+
+    .merci__closing {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(22px, 2.6vw, 28px);
+      color: #B5552F;
+      line-height: 1.4;
+    }
+
+    .merci__signature {
+      margin-top: 52px;
+    }
+    .merci__signature-script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(54px, 8vw, 80px);
+      color: #3A352C;
+      line-height: 1.1;
+    }
+    .merci__signature-toast {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: #B5552F;
+      line-height: 1;
+    }
+
+    /* ── Photo below text ── */
+    .photo-strip {
+      background: #EAE2D2;
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+    .photo-strip__wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 560px;
+      width: 100%;
+    }
+    .photo-strip__img {
+      width: 100%;
+      border-radius: 3px;
+      display: block;
+      box-shadow: 0 24px 64px rgba(58,45,30,0.26);
+    }
+    .photo-strip__border {
+      position: absolute;
+      top: -14px;
+      left: -14px;
+      right: 22px;
+      bottom: 22px;
+      border: 1px solid #C9603A;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .photo-strip__date {
+      margin-top: 40px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #9A8E78;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #3A352C;
+      color: rgba(251,248,241,0.6);
+      text-align: center;
+      padding: 48px 24px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+    }
+    .footer__names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #F0E4D0;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .merci { padding: 72px 20px 88px; }
+      .photo-strip__border { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__brand" href="index.html">Lise &amp; Yves</a>
+  <a class="nav__back" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Retour
+  </a>
+</nav>
+
+<div class="hero">
+  <img class="hero__img" src="assets/couple.jpg" alt="Lise &amp; Yves">
+  <div class="hero__overlay"></div>
+  <div class="hero__caption">
+    <div class="hero__sparkle">✨ &nbsp; Merci &nbsp; ✨</div>
+    <div class="hero__script">Lise &amp; Yves</div>
+  </div>
+</div>
+
+<section class="merci">
+  <div class="merci__inner">
+
+    <div class="merci__label">5 &amp; 6 Septembre 2026 · Provence</div>
+
+    <div class="merci__divider">
+      <span class="merci__divider-line"></span>
+      <span class="merci__divider-ornament">❤</span>
+      <span class="merci__divider-line"></span>
+    </div>
+
+    <p class="merci__text">
+      Quel bonheur de repenser à ces merveilleuses journées et à tous ces moments partagés avec vous.&nbsp;❤️
+    </p>
+
+    <p class="merci__text">
+      Votre engouement, votre participation, votre enthousiasme et votre bienveillance, vos sourires, vos éclats de rire… et même quelques petites larmes ont rendu ce week-end <strong>absolument magique</strong>.
+    </p>
+
+    <p class="merci__text">
+      Nous avons été profondément touchés par votre présence, vos attentions, votre énergie et votre générosité. Chacun, à sa manière, a contribué à faire de ce mariage un moment rempli d'émotions, de complicité et de merveilleux souvenirs.
+    </p>
+
+    <p class="merci__text">
+      Merci d'avoir été là, d'avoir partagé notre bonheur, d'avoir ri, dansé, parfois pleuré… et surtout d'avoir apporté autant de chaleur et de bienveillance à ces journées.
+    </p>
+
+    <p class="merci__closing">
+      Nous repartons avec des étoiles plein les yeux<br>et le cœur rempli de bonheur.&nbsp;❤️
+    </p>
+
+    <p class="merci__text" style="margin-top:36px;">
+      Merci à chacun d'entre vous d'avoir rendu cette journée inoubliable et d'avoir écrit avec nous cette si belle page de notre histoire.
+    </p>
+
+    <div class="merci__signature">
+      <div class="merci__signature-script">Lise &amp; Yves</div>
+      <div class="merci__signature-toast">🥂</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="photo-strip">
+  <div class="photo-strip__wrap">
+    <img class="photo-strip__img" src="assets/couple.jpg" alt="Lise &amp; Yves · Septembre 2026">
+    <div class="photo-strip__border"></div>
+  </div>
+  <div class="photo-strip__date">5–6 Septembre 2026 · Provence</div>
+</div>
+
+<footer class="footer">
+  <div class="footer__names">Lise &amp; Yves</div>
+  <div>5–6 Septembre 2026 · Provence</div>
+</footer>
+
+</body>
+</html>
